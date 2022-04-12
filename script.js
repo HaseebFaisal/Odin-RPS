@@ -17,47 +17,55 @@ function chooseMove() {
     return playerSelection.toUpperCase();
 }
 
-const computerSelection = computerPlay();
-const playerSelection = chooseMove();
+
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
         return ("It's a tie!");
     }
     else if (playerSelection == 'ROCK' && computerSelection == 'SCISSORS') {
-        let gameWinner = 1;
-        return ("Player wins!");
+        return ("player");
     }
     else if (playerSelection == 'PAPER' && computerSelection == 'ROCK') {
-        let gameWinner = 1;
-        return ("Player wins!");
+        return ("player");
     }
     else if (playerSelection == 'SCISSORS' && computerSelection == 'PAPER') {
-        let gameWinner = 1;
-        return ("Player wins!");
+        return ("player");
     }
     else if (playerSelection == 'ROCK' && computerSelection == 'PAPER') {
-        let gameWinner = 2;
-        return ("Computer wins!");
+        return ("computer");
     }
     else if (playerSelection == 'PAPER' && computerSelection == 'SCISSORS') {
-        let gameWinner = 2;
-        return ("Computer wins!");
+        return ("computer");
     }
     else if (playerSelection == 'SCISSORS' && computerSelection == 'ROCK') {
-        let gameWinner = 2;
-        return ("Computer wins!");
+        return ("computer");
     }
+
 }
 
-console.log(playRound(playerSelection, computerSelection));
+const computerSelection = computerPlay();
+const playerSelection = chooseMove();
+
+let playerWins = 0
+let computerWins = 0
+let nobodyWins = 0
 
 function game() {
     for (i = 0; i < 5; i++) {
-        const computerSelection = computerPlay();
         chooseMove();
-        console.log(playRound(playerSelection, computerSelection));
+        const computerSelection = computerPlay();
+        let roundWinner = (playRound(playerSelection, computerSelection));
+            if (roundWinner === 'player') {
+            playerWins++;
+          } 
+            else if (roundWinner === 'computer') {
+            computerWins++;
+          } else {
+            nobodyWins++;
+          }
     }
+    console.log(`The player has won ${playerWins} times. The computer has won ${computerWins} times. There was ${nobodyWins} ties.`);
 }
 
 console.log(game());
