@@ -61,14 +61,17 @@ function game() {
           } 
             else if (roundWinner === 'computer') {
             computerWins++;
+            
           } else {
             nobodyWins++;
           }
     }
     if (playerWins > computerWins) {
         console.log(`Player wins! ${playerWins} - ${computerWins}`);
+
     } else if (computerWins > playerWins) {
         console.log(`Computer wins! ${computerWins} - ${playerWins}`);
+
     } else if (playerWins === computerWins) {
         console.log(`It's a tie! ${computerWins} - ${playerWins}`);
     }
