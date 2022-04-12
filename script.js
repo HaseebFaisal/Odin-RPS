@@ -65,7 +65,13 @@ function game() {
             nobodyWins++;
           }
     }
-    console.log(`The player has won ${playerWins} times. The computer has won ${computerWins} times. There was ${nobodyWins} ties.`);
+    if (playerWins > computerWins) {
+        console.log(`Player wins! ${playerWins} - ${computerWins}`);
+    } else if (computerWins > playerWins) {
+        console.log(`Computer wins! ${computerWins} - ${playerWins}`);
+    } else if (playerWins === computerWins) {
+        console.log(`It's a tie! ${computerWins} - ${playerWins}`);
+    }
 }
 
 console.log(game());
