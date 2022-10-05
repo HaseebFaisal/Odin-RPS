@@ -2,6 +2,10 @@
 const rock = document.querySelector('.rock');
 const paper = document.querySelector('.paper');
 const scissors = document.querySelector('.scissors');
+const score = document.querySelector('.score');
+const playerScore = document.querySelector('.player-counter');
+const compScore = document.querySelector('.computer-counter');
+const gameReset = document.querySelector('.game-reset')
 
 function computerPlay() {
     let result = Math.random()
@@ -16,41 +20,78 @@ function computerPlay() {
     }
 }
 
+let playerScoreCount = 0;
+let computerScoreCount = 0;
+
+gameReset.addEventListener("click", () => {
+    playerScoreCount = 0;
+    computerScoreCount = 0;
+    playerScore.textContent = playerScoreCount;
+    compScore.textContent = computerScoreCount;
+    score.textContent = 'New Game';
+});
+
 function playRound(playerSelection, computerSelection) {
-    if (playerSelection === computerSelection) {
-        console.log("It's a tie!");
+    if (playerScoreCount === 5) {
+        score.textContent = 'Player Wins!';
+    }
+    else if (computerScoreCount === 5) {
+        score.textContent = 'Computer Wins!';
+    }
+    else if (playerSelection === computerSelection) {
+        score.textContent = "It's a tie!";
     }
     else if (playerSelection == 'ROCK' && computerSelection == 'SCISSORS') {
-        console.log("player");
+        score.textContent = "You win!";
+        playerScoreCount++;
+        console.log(playerScoreCount);
+        playerScore.textContent = playerScoreCount;
     }
     else if (playerSelection == 'PAPER' && computerSelection == 'ROCK') {
-        console.log("player");
+        score.textContent = "You win!";
+        playerScoreCount++;
+        console.log(playerScoreCount);
+        playerScore.textContent = playerScoreCount;
     }
     else if (playerSelection == 'SCISSORS' && computerSelection == 'PAPER') {
-        console.log("player");
+        score.textContent = "You win!";
+        playerScoreCount++;
+        console.log(playerScoreCount);
+        playerScore.textContent = playerScoreCount;
     }
     else if (playerSelection == 'ROCK' && computerSelection == 'PAPER') {
-        console.log("computer");
+        score.textContent = "You lose!";
+        computerScoreCount++;
+        console.log(computerScoreCount);
+        compScore.textContent = computerScoreCount;
     }
     else if (playerSelection == 'PAPER' && computerSelection == 'SCISSORS') {
-        console.log("computer");
+        score.textContent = "You lose!";
+        computerScoreCount++;
+        console.log(computerScoreCount);
+        compScore.textContent = computerScoreCount;
     }
     else if (playerSelection == 'SCISSORS' && computerSelection == 'ROCK') {
-        console.log("computer");
+        score.textContent = "You lose!";
+        computerScoreCount++;
+        console.log(computerScoreCount);
+        compScore.textContent = computerScoreCount;
     }
 
 }
 
-const computerSelection = computerPlay();
+
 
 rock.addEventListener("click", () => {
+    const computerSelection = computerPlay();
     playRound('ROCK', computerSelection);
-    computerPlay();
 });
 paper.addEventListener("click", () => {
+    const computerSelection = computerPlay();
     playRound('PAPER', computerSelection);
 });
 scissors.addEventListener("click", () => {
+    const computerSelection = computerPlay();
     playRound('SCISSORS', computerSelection)
 });
 
