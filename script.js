@@ -1,4 +1,8 @@
 // first create a function that randomly returns rock paper scissors
+const rock = document.querySelector('.rock');
+const paper = document.querySelector('.paper');
+const scissors = document.querySelector('.scissors');
+
 function computerPlay() {
     let result = Math.random()
     if (result < 0.333) {
@@ -12,50 +16,62 @@ function computerPlay() {
     }
 }
 
-function chooseMove() {
-    let playerSelection = prompt('What is your choice?', 'Rock');
-    return playerSelection.toUpperCase();
-}
-
-
-
 function playRound(playerSelection, computerSelection) {
     if (playerSelection === computerSelection) {
-        return ("It's a tie!");
+        console.log("It's a tie!");
     }
     else if (playerSelection == 'ROCK' && computerSelection == 'SCISSORS') {
-        return ("player");
+        console.log("player");
     }
     else if (playerSelection == 'PAPER' && computerSelection == 'ROCK') {
-        return ("player");
+        console.log("player");
     }
     else if (playerSelection == 'SCISSORS' && computerSelection == 'PAPER') {
-        return ("player");
+        console.log("player");
     }
     else if (playerSelection == 'ROCK' && computerSelection == 'PAPER') {
-        return ("computer");
+        console.log("computer");
     }
     else if (playerSelection == 'PAPER' && computerSelection == 'SCISSORS') {
-        return ("computer");
+        console.log("computer");
     }
     else if (playerSelection == 'SCISSORS' && computerSelection == 'ROCK') {
-        return ("computer");
+        console.log("computer");
     }
 
 }
 
 const computerSelection = computerPlay();
-const playerSelection = chooseMove();
+
+rock.addEventListener("click", () => {
+    playRound('ROCK', computerSelection);
+    computerPlay();
+});
+paper.addEventListener("click", () => {
+    playRound('PAPER', computerSelection);
+});
+scissors.addEventListener("click", () => {
+    playRound('SCISSORS', computerSelection)
+});
+
+
+/* function chooseMove() {
+    let playerSelection = prompt('What is your choice?', 'Rock');
+    return playerSelection.toUpperCase();
+} */
+
+// let playerSelection = chooseMove();
 
 let playerWins = 0
 let computerWins = 0
 let nobodyWins = 0
 
+/*
+
 function game() {
-    for (i = 0; i < 5; i++) {
-        chooseMove();
-        const computerSelection = computerPlay();
-        let roundWinner = (playRound(playerSelection, computerSelection));
+    chooseMove();
+    const computerSelection = computerPlay();
+    let roundWinner = (playRound(playerSelection, computerSelection));
             if (roundWinner === 'player') {
             playerWins++;
           } 
@@ -65,7 +81,6 @@ function game() {
           } else {
             nobodyWins++;
           }
-    }
     if (playerWins > computerWins) {
         console.log(`Player wins! ${playerWins} - ${computerWins}`);
 
@@ -78,3 +93,4 @@ function game() {
 }
 
 console.log(game());
+*/
