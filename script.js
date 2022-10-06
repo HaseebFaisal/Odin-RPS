@@ -5,7 +5,9 @@ const scissors = document.querySelector('.scissors');
 const score = document.querySelector('.score');
 const playerScore = document.querySelector('.player-counter');
 const compScore = document.querySelector('.computer-counter');
-const gameReset = document.querySelector('.game-reset')
+const gameReset = document.querySelector('.game-reset');
+const choices = document.querySelector('.play');
+
 
 function computerPlay() {
     let result = Math.random()
@@ -19,6 +21,8 @@ function computerPlay() {
         return ("SCISSORS");
     }
 }
+
+choices.forEach(choice => choice.addEventListener('click', computerPlay));
 
 let playerScoreCount = 0;
 let computerScoreCount = 0;
